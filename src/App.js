@@ -1,15 +1,29 @@
+// src/App.js
+
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
- 
+import { faLocationDot, faRoute } from '@fortawesome/free-solid-svg-icons';
+
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet-defaulticon-compatibility';
-  
+
+import RoutingMachine from './RoutingMachine';
+
 function App() {
   const [locationMarkers, setLocationMarkers] = useState([]);
+  const waypoints = [
+    {
+      latitude: 51.505,
+      longitude: -0.09,
+    },
+    {
+      latitude: 51.467,
+      longitude: -0.458,
+    },
+  ];
 
   async function handleMarkerSubmit(event) {
     event.preventDefault();
@@ -57,6 +71,7 @@ function App() {
           );
         })}
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {waypoints ? <RoutingMachine waypoints={waypoints} /> : ''}
       </MapContainer>
     </div>
   );
