@@ -7,6 +7,21 @@
   height: 100vh;
 }
 
+.routeBlock {
+  position: absolute;
+  left: 0.5vw;
+  bottom: 2vh;
+  z-index: 500;
+  padding: 5px;
+  font-size: 2rem;
+  border: 2px solid rgb(41, 38, 38);
+  background-color: #282c34;
+}
+
+.routeBlock input {
+  font-size: 1rem;
+}
+
 .inputBlock {
   display: flex;
   justify-content: space-between;
